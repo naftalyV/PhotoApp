@@ -1,0 +1,50 @@
+﻿<Page
+    x:Class="PhotosApp.Pages.AddPix"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:PhotosApp.Pages"
+    xmlns:Pix="using:PhotosApp"
+      xmlns:Model="using:PhotosApp.Models"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <Page.Resources>
+        <Pix:PhotoViewModel x:Name="VM" />
+        <Model:Converter x:Key="Converter" />
+    </Page.Resources>
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+            <!--<ToggleSwitch Name="Toggle" Toggled="Toggle_Toggled" HorizontalAlignment="Right"/>-->
+            <Border Name="brdDrop" AllowDrop="True" DragOver="brdDrop_DragOver" Drop="brdDrop_Drop" 
+                    Height="100" Width="150" Background="LightBlue" Margin="0,20,0,20">
+                <TextBlock Text="Drop image here" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Border>
+            <!--<TextBlock Text="Click to open Camera Window" HorizontalAlignment="Center"/>-->
+            <Button Name="btnCamera" Content="Open Camera"
+                    Click="{x:Bind VM.Camera}" HorizontalAlignment="Center" Margin="0,0,0,20"/>
+                <!--<TextBox  Text="{x:Bind Selected.Comment, Mode=TwoWay}"/>-->
+        </StackPanel>
+        <StackPanel Grid.Row="1">
+            <GridView Height="600"  Width="Auto" ItemsSource="{x:Bind VM.Images}" HorizontalAlignment="Stretch"
+                  SelectedItem="{x:Bind Selected, Mode=TwoWay,Converter={StaticResource Converter}}">
+               
+                <GridView.ItemTemplate>
+                    <DataTemplate  x:DataType="Pix:photoModel" >
+                        <StackPanel Height="150" Width="200" Margin="10" >
+                            <TextBlock Text="{x:Bind DateTaken}" Margin="3,3,3,3" HorizontalAlignment="Center"/>
+                            <TextBox PlaceholderText="{x:Bind Comment,Mode=TwoWay}" Margin="3,3,3,3" HorizontalAlignment="Center"/>
+                            <TextBlock Text="{x:Bind Comment}" Margin="3,3,3,3" HorizontalAlignment="Center"/>
+                            <Image Source="{x:Bind Path}" Margin="3,3,3,3"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </GridView.ItemTemplate>
+            </GridView>
+            <!--<TextBox Name="CommBtn"  Text="{x:Bind selected.Comment, Mode=TwoWay}" Margin="3,3,3,3" HorizontalAlignment="Center"/>--> 
+        </StackPanel>
+    </Grid>
+</Page>
