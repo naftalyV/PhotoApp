@@ -30,18 +30,14 @@ namespace PhotosApp
     {
         internal AddPix AddPixPage { get; set; } = new AddPix();
         internal About AboutPage { get; set; } = new About();
-       
-        // public PhotosApp.photoViewModel VM { get; set; }
+
         public MainPage()
         {
             this.InitializeComponent();
             MainAppFrame.Content = AddPixPage;
-            ShowWindowsToast("Test", "test", null);
-            //DataContext = new photoViewModel();
-            //  VM = new PhotosApp.photoViewModel();
         }
 
-        
+
 
         public void HmburgerMenu()
         {
@@ -67,19 +63,19 @@ namespace PhotosApp
                     case 0:
                         {
                             MainAppFrame.Content = AddPixPage;
-                            //VM.Camera();
+
                             break;
                         }
                     case 1:
                         {
                             MainAppFrame.Content = AboutPage;
-                            // Toggle_Click();
+
                             break;
                         }
                     case 2:
                         {
                             RunAsyncDialog();
-                            // Toggle_Click();
+
                             break;
                         }
                 }
@@ -99,40 +95,13 @@ namespace PhotosApp
                 Application.Current.Exit();
             }
         }
-        public static void ShowWindowsToast(string msgBody, string msgHeader, object content = null)
+
+        private void Toggle_Toggled(object sender, RoutedEventArgs e)
         {
-            //for more info
-            //https://blogs.msdn.microsoft.com/tiles_and_toasts/2015/07/02/adaptive-and-interactive-toast-notifications-for-windows-10/
-            try
-            {
 
-                var xmlToastTemplate = "<toast launch=\"app-defined-string\">" +
-                              "<visual>" +
-                                "<binding template =\"ToastGeneric\">" +
-                                  "<text>" + msgHeader + "</text>" +
-                                  "<text>" +
-                                   msgBody +
-                                  "</text>" +
-                                "</binding>" +
-                              "</visual>" +
-                            "</toast>";
-
-                // load the template as XML document
-                Windows.Data.Xml.Dom.XmlDocument xmlDocument = new Windows.Data.Xml.Dom.XmlDocument();
-                xmlDocument.LoadXml(xmlToastTemplate);
-
-                // create the toast notification and show to user
-                var toastNotification = new ToastNotification(xmlDocument);
-                var notification = ToastNotificationManager.CreateToastNotifier();
-               // toastNotification.ExpirationTime = DateTime.Now.AddSeconds(10);
-                notification.Show(toastNotification);
-
-            }
-            catch (Exception ex)
-            {
-
-                //  ShowAppDialog(ex.Message, "Failed to inititate toast Error", MsgOptions.OK);
-            }
         }
+
     }
 }
+
+

@@ -28,18 +28,18 @@ namespace PhotosApp
             if (imageFile != null)
             {
                 //Location of the picture taken from camera
-                var locator = new Geolocator();
+               // var locator = new Geolocator();
                 // Shows the user consent UI if needed
                 var accessStatus = await Geolocator.RequestAccessAsync();
                 if (accessStatus == GeolocationAccessStatus.Allowed)
                 {
-                    await GeotagHelper.SetGeotagFromGeolocatorAsync(imageFile, locator);
+                 //   await GeotagHelper.SetGeotagFromGeolocatorAsync(imageFile, locator);
                 }
 
                 Images.Add(new photoModel()
                 {
                     Path = new BitmapImage(new Uri(imageFile.Path)),
-                    Location = locator
+                   // Location = locator
                 });
 
             }        }

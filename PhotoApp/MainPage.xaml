@@ -9,34 +9,13 @@
     mc:Ignorable="d">
     <Page.Resources>
 
-       
-        
+
+
         <local:PhotoViewModel x:Name="VM" />
     </Page.Resources>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <!--<StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-            --><!--<ToggleSwitch Name="Toggle" Toggled="Toggle_Toggled" HorizontalAlignment="Right"/>--><!--
-            <Border AllowDrop="True" DragOver="Border_DragOver" Drop="Border_Drop"  Height="200" Width="200" Background="Purple" />
-            <TextBlock Text="Drag file here" HorizontalAlignment="Center" />
-            <Button Name="btnCamera" Content=" " FontFamily="segoe mdl2 assets" Click="{x:Bind VM.Camera}" HorizontalAlignment="Center"/>
-            <TextBlock Text="Click to camera" HorizontalAlignment="Center"/>
-            <Image Name="img" Height="100" Width="100"  />
-            <ListBox ItemsSource="{x:Bind VM.Images}" HorizontalAlignment="Center" Height="200" Width="500" Background="LightBlue">
-                --><!--ovveride the default internal Control panel for his children --><!--
-                <ListBox.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <StackPanel Orientation="Horizontal" />
-                    </ItemsPanelTemplate>
-                </ListBox.ItemsPanel>
-                <ListBox.ItemTemplate>
-                    <DataTemplate  x:DataType="local:photoModel">
-                        <Grid Height="100" Width="100" Margin="10" >
-                            <Image Source="{x:Bind Path}"/>
-                        </Grid>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
-        </StackPanel>-->
+
+
         <SplitView  DisplayMode="CompactOverlay" Name="mySplit" CompactPaneLength="35" OpenPaneLength="150">
             <SplitView.Pane>
                 <StackPanel >
@@ -48,23 +27,13 @@
                                 <TextBlock Text="   Home" />
                             </StackPanel>
                         </ListBoxItem>
-                        <!--<ListBoxItem Margin="0,10" >
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="&#xe156;" FontFamily="segoe mdl2 assets" />
-                                <TextBlock Text="  Add Photos" />
-                            </StackPanel>
-                        </ListBoxItem>-->
+
                         <ListBoxItem Margin="0,10" >
                             <StackPanel Orientation="Horizontal" >
                                 <TextBlock Text="&#xee57;" FontFamily="segoe mdl2 assets" />
                                 <TextBlock Text="  About"/>
                             </StackPanel>
                         </ListBoxItem>
-                        <!--<ListBoxItem Margin="0,10" >
-                            <StackPanel Orientation="Horizontal">
-                                <ToggleSwitch Name="Toggle" Toggled="Toggle_Toggled"/>
-                            </StackPanel>
-                        </ListBoxItem>-->
                         <ListBoxItem Margin="0,10" >
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="❌"  FontFamily="segoe UI Symbol assets" />
@@ -78,6 +47,9 @@
                 <Frame Name="MainAppFrame" />
             </SplitView.Content>
         </SplitView>
+        <StackPanel Orientation="Horizontal">
+            <ToggleSwitch Name="Toggle" Toggled="Toggle_Toggled"/>
+        </StackPanel>
 
     </Grid>
 </Page>

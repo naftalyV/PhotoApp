@@ -17,10 +17,12 @@ namespace PhotosApp
         {
             Comment = "Place Your comment here :)";
             DateTaken = DateTime.Now;
+            Location = new BasicGeoposition() { Latitude = 47.620, Longitude = -122.349 };
+            
         }
 
-        public int Id { get; set; }
-        public Geolocator Location { get; set; }
+        public int Id { get; set; } 
+        public BasicGeoposition Location { get; set; }
         public string Comment { get; set; }
         public DateTime DateTaken { get; set; } 
         public BitmapImage Path { get; set; }
