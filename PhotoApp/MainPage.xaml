@@ -14,9 +14,15 @@
         <local:PhotoViewModel x:Name="VM" />
     </Page.Resources>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+            <ToggleSwitch Name="Toggle" Toggled="Toggle_Toggled" Grid.Row="0" OffContent="DARK" OnContent="LIGHT"/>
 
 
-        <SplitView  DisplayMode="CompactOverlay" Name="mySplit" CompactPaneLength="35" OpenPaneLength="150">
+        <SplitView Grid.Row="1" DisplayMode="CompactOverlay" Name="mySplit" CompactPaneLength="35" OpenPaneLength="150">
             <SplitView.Pane>
                 <StackPanel >
                     <Button FontFamily="segoe mdl2 assets" Content="&#xE700;" Name="Hmburger" Click="{x:Bind HmburgerMenu}"/>
@@ -47,9 +53,5 @@
                 <Frame Name="MainAppFrame" />
             </SplitView.Content>
         </SplitView>
-        <StackPanel Orientation="Horizontal">
-            <ToggleSwitch Name="Toggle" Toggled="Toggle_Toggled"/>
-        </StackPanel>
-
     </Grid>
 </Page>

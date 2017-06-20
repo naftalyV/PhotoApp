@@ -1,4 +1,6 @@
-﻿using PhotosApp.Pages;
+﻿using PhotosApp;
+using PhotosApp.Models;
+using PhotosApp.Pages;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -30,14 +32,20 @@ namespace PhotosApp
     {
         internal AddPix AddPixPage { get; set; } = new AddPix();
         internal About AboutPage { get; set; } = new About();
-
+        Location l = new Location();
+        string strL;
         public MainPage()
         {
             this.InitializeComponent();
             MainAppFrame.Content = AddPixPage;
+            SetTile.StartTile();
+            SetLocation();
         }
 
-
+        private async void SetLocation()
+        {
+            strL = await l.GetLocationStr();
+        }
 
         public void HmburgerMenu()
         {
@@ -99,6 +107,12 @@ namespace PhotosApp
         private void Toggle_Toggled(object sender, RoutedEventArgs e)
         {
 
+            if (RequestedTheme != ElementTheme.Dark)
+            {
+                RequestedTheme = ElementTheme.Dark;
+            }
+            else
+                RequestedTheme = ElementTheme.Light;
         }
 
     }
