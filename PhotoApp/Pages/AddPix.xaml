@@ -38,7 +38,7 @@
                     <DataTemplate  x:DataType="Pix:photoModel" >
                         <StackPanel Height="400" Width="200" Margin="10" >
                             <TextBlock Text="{x:Bind DateTaken}" Margin="3,3,3,3" HorizontalAlignment="Center"/>
-                            <TextBlock Text="{x:Bind Location}" Margin="3,3,3,3" HorizontalAlignment="Center"/>
+                            <TextBlock Text="{x:Bind LocationStr}" Margin="3,3,3,3" HorizontalAlignment="Center"/>
                             <TextBlock Text="{x:Bind Comment}" Margin="3,3,3,3" HorizontalAlignment="Center"/>
                             <Image Source="{x:Bind Path}" Margin="3,3,3,3"/>
                         </StackPanel>

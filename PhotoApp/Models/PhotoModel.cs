@@ -9,6 +9,7 @@ using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Data;
 using PhotosApp.Models;
+using System.ComponentModel;
 
 namespace PhotosApp
 {
@@ -18,13 +19,18 @@ namespace PhotosApp
         {
             Comment = "Place Your comment here :)";
             DateTaken = DateTime.Now;
-            Location = new Location().GetLocationPoint().Result;
+            // Location = new Location().GetLocationPoint().Result;
+            intiLocation();
+        }
+
+        private async void intiLocation()
+        {
+            LocationStr = await new Location().GetLocationStr();
         }
 
         public int Id { get; set; } 
         public BasicGeoposition Location { get; set; }
-
-        public string LocationStr { get {return new Location().GetLocationStr(Location.Latitude.ToString(), Location.Longitude.ToString()).Result; } }
+        public string LocationStr { get; set; }
         public string Comment { get; set; }
         public DateTime DateTaken { get; set; } 
         public BitmapImage Path { get; set; }

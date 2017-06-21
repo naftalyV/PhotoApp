@@ -71,6 +71,7 @@ namespace PhotosApp.Pages
                         VM.Images.Add(new photoModel() { Path = new BitmapImage(new Uri(imgCopy.Path)) });
                         //Images.Add(imgCopy );
                         //VM.Images.Add(imgCopy.Path);
+                        Bindings.Update();
                    }
                 }
             }
