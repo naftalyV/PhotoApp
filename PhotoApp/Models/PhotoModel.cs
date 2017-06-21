@@ -13,28 +13,42 @@ using System.ComponentModel;
 
 namespace PhotosApp
 {
-    public class photoModel
+    public class photoModel : INotifyPropertyChanged
     {
         public photoModel()
         {
-            Comment = "Place Your comment here :)";
+            //Comment = "Place Your comment here :)";
             DateTaken = DateTime.Now;
             // Location = new Location().GetLocationPoint().Result;
             intiLocation();
         }
 
+        public event PropertyChangedEventHandler PropertyChanged;
+
         private async void intiLocation()
         {
             LocationStr = await new Location().GetLocationStr();
+
         }
 
-        public int Id { get; set; } 
+        public int Id { get; set; }
         public BasicGeoposition Location { get; set; }
-        public string LocationStr { get; set; }
-        public string Comment { get; set; }
-        public DateTime DateTaken { get; set; } 
+        string _locationStr;
+        public string LocationStr
+        {
+            get { return _locationStr; }
+            set
+            {
+                _locationStr = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("LocationStr"));
+            }
+        }
+        public string Comment {
+            get;
+            set; }
+        public DateTime DateTaken { get; set; }
         public BitmapImage Path { get; set; }
-     
+
     }
 
 }

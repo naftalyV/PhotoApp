@@ -25,6 +25,7 @@ namespace PhotosApp.Pages
     /// </summary>
     public sealed partial class AddPix : Page
     {
+
         public AddPix()
         {
             this.InitializeComponent();

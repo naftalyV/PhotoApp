@@ -24,28 +24,28 @@
                     Height="100" Width="150" Background="LightBlue" Margin="0,20,0,20">
                 <TextBlock Text="Drop image here" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             </Border>
-            <!--<TextBlock Text="Click to open Camera Window" HorizontalAlignment="Center"/>-->
+           
             <Button Name="btnCamera" Content="Open Camera"
                     Click="{x:Bind VM.Camera}" HorizontalAlignment="Center" Margin="0,0,0,20"/>
-                <!--<TextBox  Text="{x:Bind Selected.Comment, Mode=TwoWay}"/>-->
+            <Image Source="{x:Bind Model, Mode=OneWay}" Margin="3,3,3,3"/>
         </StackPanel>
         <StackPanel Grid.Row="1">
             <GridView Height="600"  Width="Auto" ItemsSource="{x:Bind VM.Images}" HorizontalAlignment="Stretch"
                   SelectedItem="{x:Bind Selected, Mode=TwoWay,Converter={StaticResource Converter}}">
 
-                <TextBox PlaceholderText="{x:Bind VM.Images,Mode=TwoWay}" Margin="3,3,3,3" HorizontalAlignment="Center"/>
+                <!--<TextBox PlaceholderText="{x:Bind VM.Images,Mode=TwoWay}" Margin="3,3,3,3" HorizontalAlignment="Center"/>-->
                 <GridView.ItemTemplate>
-                    <DataTemplate  x:DataType="Pix:photoModel" >
-                        <StackPanel Height="400" Width="200" Margin="10" >
-                            <TextBlock Text="{x:Bind DateTaken}" Margin="3,3,3,3" HorizontalAlignment="Center"/>
-                            <TextBlock Text="{x:Bind LocationStr}" Margin="3,3,3,3" HorizontalAlignment="Center"/>
-                            <TextBlock Text="{x:Bind Comment}" Margin="3,3,3,3" HorizontalAlignment="Center"/>
-                            <Image Source="{x:Bind Path}" Margin="3,3,3,3"/>
+                    <DataTemplate x:DataType="Pix:photoModel">
+                        <StackPanel Height="400" Width="300" Margin="10" >
+                            <TextBlock Text="{x:Bind DateTaken, Mode=OneWay}" Margin="3,3,3,3" HorizontalAlignment="Center"/>
+                            <TextBlock Text="{x:Bind LocationStr, Mode=OneWay}" Margin="3,3,3,3" HorizontalAlignment="Center"/>
+                            <TextBox PlaceholderText="please enter coment here" Text="{x:Bind Comment, Mode=TwoWay}" Margin="3,3,3,3" HorizontalAlignment="Center"/>
+                            <Image Source="{x:Bind Path, Mode=OneWay}" Margin="3,3,3,3"/>
                         </StackPanel>
                     </DataTemplate>
                 </GridView.ItemTemplate>
             </GridView>
-            <!--<TextBox Name="CommBtn"  Text="{x:Bind selected.Comment, Mode=TwoWay}" Margin="3,3,3,3" HorizontalAlignment="Center"/>--> 
+            
         </StackPanel>
     </Grid>
 </Page>
